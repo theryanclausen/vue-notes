@@ -1,9 +1,9 @@
-<template>
+<template><div class="form-container">
   <form @submit="submitHandle">
     <input type="text" v-model="title" name="title" placeholder="note title">
     <textarea name="textBody" v-model="textBody" placeholder="... add note"/>
     <button type="submit">{{btn}}</button>
-  </form>
+  </form></div>
 </template>
 
 <script>
@@ -25,13 +25,15 @@ methods:{
 };
 </script>
 <style lang="less" scoped>
+.form-container{
+    width:100%;
+}
 form {
   width: 500px;
   margin: 10px auto;
   display: flex;
   flex-direction: column;
   border: 3px solid #35495e;
-
   input {
     background: green;
     color: #b2e4ce;

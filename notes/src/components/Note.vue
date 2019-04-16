@@ -1,8 +1,9 @@
 <template>
   <div class="card">
     <div class="note-head">
-      <h5>{{note.title}}</h5>
-      <h5 @click="deleteNote(note.id)" class="del">X</h5>
+      <h5>{{note.title}}</h5> <div> <router-link :to="`/note/${note.id}` "> 
+          <i class="fas fa-edit"></i></router-link>
+      <i @click="deleteNote(note.id)" class="fas fa-trash-alt"></i></div>
     </div>
     <p @click='fetchNotes()'>{{note.textBody}}</p>
   </div>
@@ -38,9 +39,11 @@ export default {
       padding: 5px;
       font-size: 18px;
     }
-    .del {
-      color: red;
-      -webkit-text-stroke: 1px black;
+    a{
+        color:unset;
+    }
+    .fas {
+        padding:5px;
       cursor: pointer;
     }
   }

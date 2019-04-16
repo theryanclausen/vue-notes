@@ -21,18 +21,28 @@ export default new Vuex.Store({
         note.textBody = 'Vue using vue-router and vuex for state management'
       }
       return note;
-    }))
+    })), 
+    setNewNote:(state, newNote) => state.notes.push(newNote)
   },
   actions: {
     async fetchNotes({commit}){
       try{
-        const res = await axios.get(`${url}`)
+        const res = await axios.get(url)
         commit('setNotes', res.data);
         return;
       }catch(err){
         //console.log(err)
       }
       
+    },
+    async addNote({commit}, newNote){
+      try{
+        const res = await axios.post(url, newNote);
+        commit('setNewNote', res.data);
+
+      }catch(err){
+        alert(err)
+      }
     }
   }
 })

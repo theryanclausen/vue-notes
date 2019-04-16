@@ -1,15 +1,27 @@
 <template>
-  <div>
-    <h1>Add Notes from here</h1>
-  </div>
+  <AddEdit :btn="btn" v-on:submit="noteAdd"/>
 </template>
 
 <script>
+import AddEdit from "../components/AddEdit";
+import { mapActions } from "vuex";
 export default {
-  name:'Add'
-}
+  name: "Add",
+  data() {
+    return { btn: "add note", title: "", textBody: "" };
+  },
+  methods: {
+    ...mapActions(['addNote']),
+    noteAdd(newNote) {
+      this.addNote(newNote)
+    }
+  },
+  components: {
+    AddEdit
+  }
+};
 </script>
-<style lang="less" scoped>
 
+<style>
 </style>
 

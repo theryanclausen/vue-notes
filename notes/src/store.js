@@ -27,7 +27,6 @@ export default new Vuex.Store({
       })),
     setNote: (state, note) => {
       if(!note){
-        console.log('buh')
         return
       }
       if (note.id === 1 && note.title === "Welcome to Bubble Notes") {

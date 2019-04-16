@@ -7,11 +7,13 @@
 </template>
 
 <script>
+import {mapActions,mapGetters } from 'vuex'
 export default {
   name: "AddEdit",
-  props:['btn'],
+  props:['btn','id'],
 data(){return{title:'', textBody:''}},
-methods:{
+computed: mapGetters(['thisNote']),
+methods:{...mapActions(['getNote']),
     submitHandle(e){
         e.preventDefault()
         const {title, textBody} = this
@@ -20,20 +22,29 @@ methods:{
         this.textBody=''
         this.$router.push({path:'/', query:''})
     }
+},
+created(){
+    if(this.id){
+        console.log(this.id)
+        this.getNote(this.id)
+    }
 }
 
 };
 </script>
 <style lang="less" scoped>
 .form-container{
-    width:100%;
+    width:100vw;
 }
 form {
-  width: 500px;
+  max-width: 500px;
   margin: 10px auto;
   display: flex;
   flex-direction: column;
   border: 3px solid #35495e;
+  @media (max-width: 500px){
+      margin:10px;
+  }
   input {
     background: green;
     color: #b2e4ce;

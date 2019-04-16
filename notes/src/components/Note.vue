@@ -27,7 +27,7 @@ export default {
     color: #b2e4ce;
     width: 100%;
     h5 {
-      padding: 5px 0;
+      padding: 5px ;
       font-size: 18px;
     }
   }

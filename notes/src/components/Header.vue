@@ -31,6 +31,9 @@ header {
     display:flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 490px){
+        flex-direction: column;
+    }
     .logo-wrapper {
       width: 200px;
       display: flex;
@@ -52,6 +55,10 @@ header {
            color:#b2e4ce;
            text-decoration: none;
            margin:0 15px;
+           @media (max-width: 580px){
+               margin:0 7px;
+               font-size: 18px;
+           }
            &:hover{
                color:#41B883;
            }

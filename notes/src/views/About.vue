@@ -26,7 +26,7 @@
 
 <style lang="less" scoped>
 .card-container {
-  width: 100%;
+  width: 100vw;
   .card {
     width: 500px;
     margin: 10px auto;
@@ -38,6 +38,9 @@
       &:hover {
         text-decoration: underline;
       }
+    }
+    h1{
+      padding:5px;
     }
     .img-container {
       width: 100%;

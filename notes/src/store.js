@@ -7,10 +7,12 @@ const url="https://backend-project-week-lambda.herokuapp.com/api/notes/"
 
 export default new Vuex.Store({
   state: {
-    notes:[]
+    notes:[],
+    note: {title:'', textBody:''}
   },
   getters:{
-    allNotes: state => state.notes
+    allNotes: state => state.notes,
+    thisNote: state => state.note
   },
   mutations: {
     setNotes: (state, notes) => (state.notes = notes.map(note =>{
@@ -22,6 +24,8 @@ export default new Vuex.Store({
       }
       return note;
     })), 
+    setNote:(state, note) => (state.note = note),
+    clearNote:(state) => (state.note = {title:'', textBody:''}),
     setNewNote:(state, newNote) => state.notes.push(newNote)
   },
   actions: {
@@ -34,6 +38,14 @@ export default new Vuex.Store({
         //console.log(err)
       }
       
+    },
+    getNote({commit,state}, id){
+      let foundNote = state.notes.find(note => note.id == id)
+      if (foundNote){
+        const { title, textBody} = foundNote.__ob__.value
+        foundNote = {id, title, textBody}
+      }
+      commit('setNote', foundNote)
     },
     async addNote({commit}, newNote){
       try{

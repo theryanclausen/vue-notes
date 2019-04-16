@@ -23,6 +23,7 @@ export default {
 .card-container{
     display:flex;
     flex-wrap: wrap;
+    padding:15px;
 }
 </style>
 

@@ -2,7 +2,7 @@
   <div id="app">
     <Header/>
 
-    <router-view class="rv"/>
+    <router-view/>
   </div>
 </template>
 
@@ -30,9 +30,7 @@ export default {
   color: #2c3e50;
   background: #41b883;
   height: 100vh;
-  .rv {
-    margin: 15px 20px;
-  }
+
 }
 .card {
   color: #35495e;

@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h2>notes</h2>
+  <div class="card-container">
     <Note v-bind:note="note" :key="note.id" v-for="note in allNotes"></Note>
   </div>
 </template>
@@ -20,6 +19,10 @@ export default {
 };
 </script>
 
-<style lang="less">
+<style>
+.card-container{
+    display:flex;
+    flex-wrap: wrap;
+}
 </style>
 

@@ -23,7 +23,7 @@ export default {
 <style lang="less" scoped>
 header {
   background: green;
-  color: #35495e;
+  color: #b2e4ce;
   .header-wrapper {
     width: 95%;
     margin: 0 auto;
@@ -49,7 +49,7 @@ header {
     nav{
         font-size:22px;
         a{
-           color:#35495e;
+           color:#b2e4ce;
            text-decoration: none;
            margin:0 15px;
            &:hover{

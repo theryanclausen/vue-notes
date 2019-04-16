@@ -30,7 +30,7 @@ export default new Vuex.Store({
         commit('setNotes', res.data);
         return;
       }catch(err){
-        console.log(err)
+        //console.log(err)
       }
       
     }

@@ -1,10 +1,11 @@
 <template>
-    <div></div>
+    <div><h5>{{note.title}}</h5><p>{{note.textBody}}</p> </div>
 </template>
 
 <script>
 export default {
-
+    name:'Note',
+    props:["note"]
 }
 </script>
 

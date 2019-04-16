@@ -8,16 +8,19 @@ import { mapActions } from "vuex";
 export default {
   name: "Add",
   data() {
-    return { btn: "add note", title: "", textBody: "" };
+    return { btn: "add note"};
   },
   methods: {
     ...mapActions(['addNote']),
-    noteAdd(newNote) {
-      this.addNote(newNote)
+    noteAdd() {
+      this.addNote()
     }
   },
   components: {
     AddEdit
+  },
+  created(){
+    this.$store.commit('clearNote')
   }
 };
 </script>

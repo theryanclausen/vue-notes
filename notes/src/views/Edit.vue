@@ -1,5 +1,7 @@
-<template> <div class="a">
-  <AddEdit :btn="btn" v-on:submit="noteEdit" :id='this.$route.params.id'/></div>
+<template>
+  <div class="a">
+    <AddEdit :btn="btn" v-on:submit="noteEdit" />
+  </div>
 </template>
 
 <script>
@@ -8,18 +10,17 @@ import { mapActions } from "vuex";
 export default {
   name: "Edit",
   data() {
-    return { btn: "edit note"};
+    return { btn: "edit note" };
   },
   methods: {
-    ...mapActions(['editNote']),
-        noteEdit(newNote) {
-      this.editNote(newNote)
+    ...mapActions(["editNote"]),
+    noteEdit() {
+      this.editNote();
     }
   },
   components: {
     AddEdit
-  },
-
+  }
 };
 </script>
 

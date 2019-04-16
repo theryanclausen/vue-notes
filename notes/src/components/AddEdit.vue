@@ -1,40 +1,55 @@
-<template><div class="form-container">
-  <form @submit="submitHandle">
-    <input type="text" v-model="title" name="title" placeholder="note title">
-    <textarea name="textBody" v-model="textBody" placeholder="... add note"/>
-    <button type="submit">{{btn}}</button>
-  </form></div>
+<template>
+  <div class="form-container">
+    <form @submit="submitHandle">
+      <input type="text" v-model="title" name="title" placeholder="note title">
+      <textarea name="textBody" v-model="textBody" placeholder="... add note"/>
+      <button type="submit">{{btn}}</button>
+    </form>
+  </div>
 </template>
 
 <script>
-import {mapActions,mapGetters } from 'vuex'
+import { mapActions } from "vuex";
 export default {
   name: "AddEdit",
-  props:['btn','id'],
-data(){return{title:'', textBody:''}},
-computed: mapGetters(['thisNote']),
-methods:{...mapActions(['getNote']),
-    submitHandle(e){
-        e.preventDefault()
-        const {title, textBody} = this
-        this.$emit('submit', {title, textBody})
-        this.title=''
-        this.textBody=''
-        this.$router.push({path:'/', query:''})
+  props: ["btn", "id"],
+  computed: {
+    title: {
+      get() {
+        return this.$store.state.note.title;
+      },
+      set(value) {
+        this.$store.commit("updateTitle", value);
+      }
+    },
+    textBody: {
+      get() {
+        return this.$store.state.note.textBody;
+      },
+      set(value) {
+        this.$store.commit("updateTextBody", value);
+      }
     }
-},
-created(){
-    if(this.id){
-        console.log(this.id)
-        this.getNote(this.id)
+  },
+  methods: {
+    ...mapActions(["getNote"]),
+    submitHandle(e) {
+      e.preventDefault();
+      this.$emit("submit");
+      this.$router.push({ path: "/", query: "" });
     }
-}
-
+  },
+  created() {
+    if (this.$route.params.id) {
+      console.log(this.$route.params.id);
+      this.getNote(this.$route.params.id);
+    }
+  }
 };
 </script>
 <style lang="less" scoped>
-.form-container{
-    width:100vw;
+.form-container {
+  width: 100vw;
 }
 form {
   max-width: 500px;
@@ -42,8 +57,8 @@ form {
   display: flex;
   flex-direction: column;
   border: 3px solid #35495e;
-  @media (max-width: 500px){
-      margin:10px;
+  @media (max-width: 500px) {
+    margin: 10px;
   }
   input {
     background: green;
@@ -56,6 +71,7 @@ form {
     color: #b2e4ce;
   }
   textarea {
+    padding: 5px;
     height: 300px;
     color: #35495e;
     background: #b2e4ce;

@@ -2,17 +2,23 @@
   <div class="card">
     <div class="note-head">
       <h5>{{note.title}}</h5>
+      <h5 @click="deleteNote(note.id)" class="del">X</h5>
     </div>
-    <p>{{note.textBody}}</p>
+    <p @click='fetchNotes()'>{{note.textBody}}</p>
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "Note",
-  props: ["note"]
+  methods: {...mapActions(["deleteNote"])}
+ ,
+  props: ["note"],
+  
 };
 </script>
+
 
 <style lang="less" scoped>
 .card {
@@ -26,9 +32,16 @@ export default {
     background: green;
     color: #b2e4ce;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
     h5 {
-      padding: 5px ;
+      padding: 5px;
       font-size: 18px;
+    }
+    .del {
+      color: red;
+      -webkit-text-stroke: 1px black;
+      cursor: pointer;
     }
   }
   p {

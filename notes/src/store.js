@@ -27,6 +27,7 @@ export default new Vuex.Store({
       })),
     setNote: (state, note) => {
       if(!note){
+        console.log('buh',note)
         return
       }
       if (note.id === 1 && note.title === "Welcome to Bubble Notes") {
@@ -65,7 +66,7 @@ export default new Vuex.Store({
         commit("clearNote");
         return;
       }
-      let foundNote = state.notes.find(note => note.id == id);
+      let foundNote = state.notes.find(note => note.id === id);
       if (foundNote) {
         const { title, textBody } = foundNote.__ob__.value;
         foundNote = { id, title, textBody };

@@ -15,6 +15,7 @@ export default {
   computed: mapGetters(["allNotes"]),
   created() {
     this.fetchNotes();
+    this.$store.commit('clearNote');
   }
 };
 </script>

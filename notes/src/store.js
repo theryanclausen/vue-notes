@@ -27,8 +27,7 @@ export default new Vuex.Store({
       })),
     setNote: (state, note) => {
       if(!note){
-        console.log('buh',note)
-        return
+        return;
       }
       if (note.id === 1 && note.title === "Welcome to Bubble Notes") {
         note.title = "Welcome to Vue Notes";
@@ -58,7 +57,7 @@ export default new Vuex.Store({
         commit("setNotes", res.data);
         return;
       } catch (err) {
-        //console.log(err)
+        alert(err)
       }
     },
     async getNote({ commit, state }, id = null) {

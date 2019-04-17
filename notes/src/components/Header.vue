@@ -39,7 +39,7 @@ header {
       width: 200px;
       display: flex;
       justify-content: flex-start;
-      align-items: center;
+      align-items: flex-start;
       .title {
         .title-line {
           line-height: 1.5;
@@ -55,9 +55,10 @@ header {
       }
       .logo {
         width: auto;
-        height: 30px;
+        height: 33px;
         padding-top:4px;
         margin: 0;
+        transform: translateY(3px);
       }
     }
 

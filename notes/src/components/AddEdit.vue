@@ -41,7 +41,6 @@ export default {
   },
   created() {
     if (this.$route.params.id) {
-      console.log(this.$route.params.id);
       this.getNote(this.$route.params.id);
     }
   }
@@ -71,7 +70,8 @@ form {
     color: #b2e4ce;
   }
   textarea {
-    padding: 5px;
+    padding: 5px 10px;
+    font-size:16px;
     height: 300px;
     color: #35495e;
     background: #b2e4ce;
